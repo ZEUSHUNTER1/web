@@ -1,13 +1,14 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const port = 4000;
+
+const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'ui'));
 
 app.get('/', (req, res) => {
-  res.render('blog')
+  res.render('blog');
 });
 
 app.get('/about', (req, res) => {
@@ -18,6 +19,6 @@ app.get('/profile', (req, res) => {
   res.sendFile(path.join(__dirname, 'ui/about', 'profile.jpg'));
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
